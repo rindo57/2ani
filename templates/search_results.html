@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .anime-list { display: flex; flex-wrap: wrap; gap: 20px; }
+        .anime-card { width: 200px; border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
+        .anime-card img { width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    <a href="/">Back to Home</a>
+    
+    <div class="anime-list">
+        {% for result in results %}
+        <div class="anime-card">
+            <a href="/anime/{{ result.title_en|urlencode }}">
+                <img src="{{ result.poster }}" alt="{{ result.title_en }}">
+                <h3>{{ result.title_en }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
