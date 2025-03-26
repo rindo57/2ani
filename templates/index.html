@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Embedder</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .anime-list { display: flex; flex-wrap: wrap; gap: 20px; }
+        .anime-card { width: 200px; border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
+        .anime-card img { width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <h1>Anime Embedder</h1>
+    
+    <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Search anime...">
+        <button type="submit">Search</button>
+    </form>
+    
+    <h2>Trending Anime</h2>
+    <div class="anime-list">
+        {% for anime in trending %}
+        <div class="anime-card">
+            <a href="/anime/{{ anime.title_en|urlencode }}">
+                <img src="{{ anime.poster }}" alt="{{ anime.title_en }}">
+                <h3>{{ anime.title_en }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <h2>New Anime</h2>
+    <div class="anime-list">
+        {% for anime in new_anime %}
+        <div class="anime-card">
+            <a href="/anime/{{ anime.title_en|urlencode }}">
+                <img src="{{ anime.poster }}" alt="{{ anime.title_en }}">
+                <h3>{{ anime.title_en }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
