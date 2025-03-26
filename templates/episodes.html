@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }} - Episodes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .episode-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+        .episode-card { padding: 10px; border: 1px solid #ddd; text-align: center; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <a href="/">Back to Home</a>
+    
+    <h2>Episodes</h2>
+    <div class="episode-list">
+        {% for episode in episodes %}
+        <div class="episode-card">
+            <a href="/embed/{{ title|urlencode }}-episode-{{ episode.episode_number }}">
+                Episode {{ episode.episode_number }}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
